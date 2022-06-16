@@ -1,0 +1,53 @@
+
+import java.awt.*;
+import java.util.Random;
+
+public class Lion extends Critter {
+
+
+    private String symbol = "L"; 
+    private Random randomObj = new Random();
+    private int x = randomObj.nextInt(3);
+    private int y = 0;
+
+    public Lion() {
+
+    }
+    
+    public Action getMove(CritterInfo info) {
+        y++;
+        if (info.getFront() == Neighbor.OTHER) {
+            return Action.INFECT;
+        } else if (info.getFront() == Neighbor.WALL || info.getRight() == Neighbor.WALL) {
+            return Action.LEFT;
+        } else if (info.getFront() == Neighbor.SAME){
+            return Action.RIGHT;
+        } else {
+            return Action.HOP;
+        }
+            
+    }
+
+
+    public Color getColor() {
+        if (y == 3){
+             x = randomObj.nextInt(3);
+             y = 0;
+        }
+       switch(x){
+           case 0:
+            return Color.RED; 
+           case 1:
+            return Color.GREEN;
+           case 2: 
+            return Color.BLUE;
+           default:
+            return Color.RED;
+       }
+    }
+       
+    
+    public String toString() {
+        return symbol; 
+    }
+}
