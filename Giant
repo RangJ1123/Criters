@@ -1,0 +1,56 @@
+import java.awt.*;
+
+public class Giant extends Critter {
+
+    private int x = 0; 
+    private int y = 0;
+    private String name1 = "fie";
+    private String name2 = "foe";
+    private String name3 = "fum";
+    private String name4 = "fee";
+
+
+
+    public Action getMove(CritterInfo info) {
+        x++;
+        if (info.getFront() == Neighbor.OTHER) {
+            return Action.INFECT;
+        } else if (info.getFront() == Neighbor.EMPTY){
+            return Action.HOP;
+        } else {
+            return Action.RIGHT; 
+        }
+
+    }
+
+    public Giant() {
+
+    }
+
+    public Color getColor() {
+        return Color.GRAY;
+    }
+
+    public String toString() {
+        if (y == 4) {
+            y = 0;
+       }
+        if (x == 6) {
+            y++;
+            x = 0;
+        }
+        switch (y){
+            case 1:
+                return name1;
+            case 2: 
+                return name2; 
+            case 3: 
+                return name3;
+            case 4:
+                return name4;
+                
+            default: 
+                return name4;
+        }
+    }
+}
