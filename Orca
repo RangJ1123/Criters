@@ -1,0 +1,37 @@
+// Rangganatha Siregar and Elaine Hsu
+// 19/04/2022
+// CS &145
+// Lab #2
+//
+// The purpose of this program is to allow the user to run a criter fight 
+// We got everything working perfectly and we used VSC for this project
+
+import java.awt.*;
+
+public class Orca extends Critter {
+    private String orcaGang = "Orca"; 
+
+    public Orca() {
+
+    }
+
+    public Action getMove(CritterInfo info) {
+// I want the orca's to win, basically the fly traps will always win because they are grouped and stationary
+// but the orca's are also grouped and hunt and move together like how orcas hunt in real life 
+// basically the orca's won over all the other animals but flytraps will always win 
+        if (info.getFront() == Neighbor.OTHER) {
+            return Action.INFECT;
+        } else if (info.getFront() == Neighbor.EMPTY) {
+            return Action.HOP;
+        }
+        return Action.RIGHT;
+    }
+
+    public Color getColor() {
+        return Color.ORANGE;
+    }
+
+    public String toString() {
+        return orcaGang; 
+    }
+}
