@@ -1,0 +1,43 @@
+
+import java.awt.*;
+
+public class Bear extends Critter {
+    private boolean polarBear;
+    private String slash = "/";
+
+    public Bear(boolean polar) {
+        polarBear = polar;
+    }
+
+    public Action getMove(CritterInfo info) {
+            
+        if (slash == "/") {
+             slash = "\\";
+        } else {
+            slash = "/";
+            }
+
+        if (info.getFront() == Neighbor.OTHER) {
+            return Action.INFECT;
+        } else if (info.getFront() == Neighbor.EMPTY) {
+
+            return Action.HOP;
+        }
+        return Action.LEFT;
+    }
+    
+
+    public Color getColor() {
+        if (polarBear){
+            return Color.WHITE;
+
+        } else {
+            return Color.BLACK;
+        }
+       
+    }
+
+    public String toString() {
+        return slash;
+    }
+}
